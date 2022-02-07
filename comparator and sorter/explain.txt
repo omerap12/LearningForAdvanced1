@@ -1,0 +1,8 @@
+the function:
+template<class T,class Comparator>
+void sortStudents(T** students,Comparator& c,int length)
+
+gets an array of students pointers (can be people , animals etc) and a compareable class and sort the array using the comparator:
+demonstrated at the line 
+if (!c(students[j],students[j+1])).
+
