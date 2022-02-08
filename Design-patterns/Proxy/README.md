@@ -1,1 +1,1 @@
-![alt text](https://en.wikipedia.org/wiki/Proxy_pattern#/media/File:Proxy_pattern_diagram.svg)
+![alt text](https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Proxy_pattern_diagram.svg/1920px-Proxy_pattern_diagram.svg.png)
