@@ -1,1 +1,1 @@
-![alt text](https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Composite_UML_class_diagram_%28fixed%29.svg/1600px-Composite_UML_class_diagram_%28fixed%29.svg.png)
+![composite](https://user-images.githubusercontent.com/61663422/152955834-6675c3f7-8153-457c-8211-154ab7d993d6.PNG)
