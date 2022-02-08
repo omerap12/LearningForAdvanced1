@@ -1,1 +1,1 @@
-design patterns examples for test 
+Design patterns examples, written by me.
