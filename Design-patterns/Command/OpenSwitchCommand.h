@@ -9,6 +9,7 @@
 #include "Command.h"
 #include "Swichable.h"
 
+//concrete command
 class OpenSwitchCommand: public Command {
 private:
     Swichable* light;
