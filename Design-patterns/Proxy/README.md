@@ -1,1 +1,1 @@
-![alt text](https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Proxy_pattern_diagram.svg/1920px-Proxy_pattern_diagram.svg.png)
+![proxy](https://user-images.githubusercontent.com/61663422/152956072-66196e5a-ec20-41b1-ab47-a09123dd212b.PNG)
