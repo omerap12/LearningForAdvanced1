@@ -1,3 +1,3 @@
 # LearningForAdvanced1
 
-Design patterns in C++ written by me.
+C++ design patterns, threads and more.
