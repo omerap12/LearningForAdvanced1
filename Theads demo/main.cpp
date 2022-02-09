@@ -20,9 +20,9 @@ void dropMoney(int money, Person& p){
     p.money -= money;
     if (p.money < 0){
         std::cout<<"You are at overdraft "<<p.money<<std::endl;
-        return;
+    }else{
+        std::cout<<"Money "<<p.money<<std::endl;
     }
-    std::cout<<"Money "<<p.money<<std::endl;
 }
 
 
