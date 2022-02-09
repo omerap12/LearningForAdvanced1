@@ -85,6 +85,7 @@ public:
                 this->name = other.getName();
                 this->age = other.getAge();
             }
+            return *this;
         }
 
         /**
