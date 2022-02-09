@@ -2,35 +2,54 @@
 #include <thread>
 #include <mutex>
 #include <condition_variable>
+#include "Person.h"
 
-std::condition_variable cv;
-std::mutex m;
-long balance = 0;
+std::mutex personMutex;
+std::condition_variable condition;
 
-void addMoney(int money){
-    std::lock_guard<std::mutex> lg(m);
-    balance += money;
-    std::cout<<"Money add: current Balance "<<balance<<std::endl;
-    cv.notify_all();
+
+void moneyAdd(int money,Person& p){
+    std::lock_guard<std::mutex> locker(personMutex);
+    p.money+=money;
+    std::cout<<"Money in person "<<p.money<<std::endl;
+    condition.notify_all();
 }
-
-void withdrawMoney(int money){
-    std::unique_lock<std::mutex> ul(m);
-    cv.wait(ul,[]{return (balance != 0);});
-    if (balance >= money){
-        balance -= money;
-        std::cout<<"Amount deducted "<<money<<std::endl;
-    }else{
-        std::cout <<"Amount can't be deducted"<<std::endl;
+void dropMoney(int money, Person& p){
+    std::unique_lock<std::mutex> locker(personMutex);
+    condition.wait(locker,[&p]{return p.money != 0;}); //wait untill lock is off and person not broke
+    p.money -= money;
+    if (p.money < 0){
+        std::cout<<"You are at overdraft "<<p.money<<std::endl;
+        return;
     }
-    std::cout<<"Current balance "<<balance<<std::endl;
+    std::cout<<"Money "<<p.money<<std::endl;
 }
+
 
 int main() {
-    std::thread t1(withdrawMoney,500);
-    std::thread t2(addMoney,500);
+    Person* p = new Person("omer",20);
+
+    /**
+     * To pass a reference parameter to std::thread, you need to convert it to a reference_wrapper at the call site
+     * This is because std::thread copies its arguments, and references cannot be copied.
+     */
+    std::thread t1(moneyAdd,100,std::ref(*p));
+    std::thread t2(dropMoney,100,std::ref(*p));
+    std::thread t3(dropMoney,100,std::ref(*p));
+    std::thread t4(moneyAdd,100,std::ref(*p));
+
     t1.join();
     t2.join();
-    return 0;
+    t3.join();
+    t4.join();
+
+
+
+
+
+
+
+
+
 
 }
