@@ -16,6 +16,11 @@ private:
     }
 public:
     static Singleton& getInstance() {
+        /**
+         * Static variables in a class: As the variables declared as static are initialized only once 
+         * as they are allocated space in separate static storage so, 
+         * the static variables in a class are shared by the objects. 
+         */
         static Singleton *singleton = new Singleton();
         return *singleton;
     }
