@@ -23,8 +23,8 @@ public:
     int getId() override{
         return this->id;
     }
-    bool checkIfSame(const Prototype* other) override{
-        return this == other && other == this->child;
+    bool checkIfSame(Prototype* other) override{
+        return this == other || other->getChild() == this->child;
     }
     void print() const override{
         std::cout<<"Father: ID - "<<this->id<<" ";
@@ -33,6 +33,10 @@ public:
     Prototype* Clone() override{
         return new Father(id,this->child->Clone());
     }
+    Prototype* getChild() override{
+        return this->child;
+    }
+
 };
 
 

@@ -22,11 +22,14 @@ public:
     int getId() override{
         return this->id;
     }
-    bool checkIfSame(const Prototype* other){
-        return this==other;
+    bool checkIfSame(Prototype* other){
+        return this == other;
     }
     void print() const override{
         std::cout<<"Child: "<<this->id<<std::endl;
+    }
+    Prototype* getChild() override{
+        return this;
     }
 };
 
