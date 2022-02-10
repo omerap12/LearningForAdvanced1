@@ -78,21 +78,6 @@ public:
     String(String&&  s){
         *this = std::move(s);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 };
-
 
 #endif //LEARNINGFORTEST_STRING_H
