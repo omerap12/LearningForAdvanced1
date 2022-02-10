@@ -38,6 +38,7 @@ public:
     String& operator = (const String& s){
         if (this != &s){
             delete[] chars;
+            this->chars = nullptr;
             this->len = s.len;
             chars = new char[this->len];
             strcpy(this->chars,s.chars);
@@ -51,7 +52,6 @@ public:
      * @param s - the other String.
      */
     String(const String& s){
-        this->chars = nullptr;
         //calling the copy assignment operator
         *this = s;
     }
@@ -78,21 +78,6 @@ public:
     String(String&&  s){
         *this = std::move(s);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 };
-
 
 #endif //LEARNINGFORTEST_STRING_H

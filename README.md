@@ -1,3 +1,3 @@
 # LearningForAdvanced1
 
-C++ design patterns, threads and more.
+Learning for test (C++ language): design patterns, threads and more.
