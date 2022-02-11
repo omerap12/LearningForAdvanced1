@@ -15,9 +15,8 @@ class Component {
 public:
     virtual void operation() = 0;
     virtual bool isCircle(Component* newOne) = 0;
-    virtual std::string getName() = 0;
-    virtual bool callingRoot(Component* newOne) = 0;
-
+    virtual void setFather(Component* f) = 0;
+    virtual Component* getFather() = 0;
 };
 
 

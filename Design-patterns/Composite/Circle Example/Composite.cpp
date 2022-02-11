@@ -6,32 +6,39 @@
 #include "iostream"
 
 void Composite::Add(Component* c) {
-    if (!isCircle(c))
-        this->childern.push_back(c);
+    if (!isCircle(c)) {
+        c->setFather(this);
+        this->children.push_back(c);
+    }
     else{
         std::cout<<"We have circle - not OK! "<<std::endl;
     }
 }
 
-bool Composite::isCircle(Component* newOne){
-    return this->root->callingRoot(newOne);
-}
 
 
 void Composite::operation(){
     std::cout<<"Commander: "<<this->name<<" With soldiers: "<<std::endl;
-    int length = this->childern.size();
+    int length = this->children.size();
     for (int i = 0; i<length; i++)
-        childern[i]->operation();
+        children[i]->operation();
 }
 
-bool Composite::callingRoot(Component *newOne) {
-    if (this->name == newOne->getName())
-        return true;
-    if (this->childern.size() == 2)
-        return this->childern[0]->callingRoot(newOne) || this->childern[1]->callingRoot(newOne);
-    if (this->childern.size() == 1)
-        return this->childern[0]->callingRoot(newOne);
+void Composite::setFather(Component *f) {
+    this->father = f;
+}
+
+bool Composite::isCircle(Component* c) {
+    Component* temp = this;
+    while (temp != nullptr){
+        if (temp == c)
+            return true;
+        temp = temp->getFather();
+    }
     return false;
+}
+
+Component *Composite::getFather() {
+    return this->father;
 }
 

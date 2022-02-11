@@ -9,25 +9,16 @@
 #include "Component.h"
 
 class Leaf : public Component{
+    Component* father;
     std::string name;
-    void operation() override;
 public:
     Leaf(std::string Name){
         this->name = std::move(Name);
     }
-    bool isCircle(Component* newOne) override{
-        return true;
-    }
-    bool callingRoot(Component* newOne) override{
-        return this->name == newOne->getName();
-    }
-    std::string getName() override{
-        return this->name;
-    }
-
-
-
-
+    void operation() override;
+    void setFather(Component* f) override;
+    Component* getFather() override;
+    bool isCircle(Component* c) override;
 };
 
 

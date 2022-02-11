@@ -11,27 +11,21 @@
 #include "Component.h"
 
 class Composite : public Component{
-    Component* root;
-    std::vector<Component*> childern;
+private:
+    Component* father;
+    std::vector<Component*> children;
     std::string name;
 public:
     Composite(std::string Name) {
         this->name = std::move(Name);
-        this->root = this;
-    }
-    Composite(std::string Name, Component* r){
-        this->name = std::move(Name);
-        this->root = r;
+        this->father = nullptr;
     }
 
-    std::string getName() override{
-        return this->name;
-    }
-
+    void setFather(Component* f) override;
     void Add(Component* c);
     void operation() override;
-    bool isCircle(Component* newOne) override;
-    bool callingRoot(Component* newOne) override;
+    bool isCircle(Component* c);
+    Component* getFather() override;
 };
 
 
