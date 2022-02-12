@@ -1,0 +1,1 @@
+Friend declaration and usage.
